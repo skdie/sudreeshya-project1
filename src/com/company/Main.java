@@ -1,24 +1,15 @@
 package com.company;
-
 import javafx.scene.transform.Scale;
-
 import java.util.Scanner;
-
 public class Main {
-
-
     public static void main(String[] args) {
 	// write your code here
-
         int qNo;
         int a,b,c;
         char ch;
-
         Scanner sc = new Scanner(System.in);
-
         System.out.println("Select the question number: ");
         qNo = sc.nextInt();
-
         switch (qNo) {
             case 1:
                 System.out.println("This is a theory");
@@ -160,7 +151,6 @@ public class Main {
                         System.out.println("31 days");
                         break;
                 }
-
             case 12:
                 System.out.println("Enter the total amount");
                 a = sc.nextInt();
@@ -279,7 +269,6 @@ public class Main {
             case 19:
                 System.out.println("Question is not clear");
                 break;
-
             case 20:
                 System.out.println("Enter total units of electricity consuption");
                 int unit = sc.nextInt();
@@ -288,32 +277,20 @@ public class Main {
                     q=unit-250;
                     unit = unit - q;
                 }
-
                 if(unit>150){
                     w=unit-150;
                     unit = unit - w;
                 }
-
                 if(unit>50){
                     e=unit-50;
                     unit = unit - e;
                 }
-
-
                 float total = (float) (q*1.50 + w*1.20 + e*0.75 + unit*0.5);
-
                 total = total + 20/100*total;
-
                 System.out.println("Total bill amount is: "+total);
                 break;
-                    
-
-
-
-
-
+            default:
+                System.out.println("Please enter a valid question.");
         }
-
-
     }
 }
