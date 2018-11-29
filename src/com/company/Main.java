@@ -18,7 +18,7 @@ public class Main {
                 System.out.println("Enter two numbers: ");
                 a = sc.nextInt();
                 b = sc.nextInt();
-                System.out.println("Greater number is: "+( (a>b)?a:b));
+                System.out.println("Greater number is: "+ greatertwo(a,b) );
                 break;
             case 3:
                 System.out.println("Enter first number:");
@@ -27,51 +27,32 @@ public class Main {
                 b = sc.nextInt();
                 System.out.println("Enter third number:");
                 c = sc.nextInt();
-                System.out.println("Greater number is :"+((a>b) ? ( (a>c)?a:c ):( (b>c)?b:c )));
+                greaterthree(a,b,c);
                 break;
             case 4:
                 System.out.println("Enter the number");
                 a = sc.nextInt();
-                if(a>=0){
-                    System.out.println("It is a positive number");
-                    if(a==0)
-                        System.out.println("It is zero");
-                }
-                else
-                    System.out.println("It is negative number");
+                checknumber(a);
                 break;
             case 5:
                 System.out.println("Enter a number");
                 a = sc.nextInt();
-                if( a%5 == 0 && a%11 == 0 )
-                    System.out.println("It is divisible by 5 and 11");
-                else
-                    System.out.println("It is not divisible by 5 and 11");
+                checkDivisible(a);
                 break;
             case 6:
-                System.out.println("Enter a number: ");
-                a = sc.nextInt();
-                if(a%2 == 0)
-                    System.out.println("It is a even number");
-                else
-                    System.out.println("It is an odd number");
+                evenOdd();
                 break;
             case 7:
                 System.out.println("Enter year: ");
                 int year = sc.nextInt();
 
-                if( (year %400  == 0) || ((year%4 ==0) && (year%100 != 0)) )
-                    System.out.println("It is a  leap year");
-                else
-                    System.out.println("It is not a leap year");
+                leapYear(year);
+
                 break;
             case 8:
                 System.out.println("Enter an alphabet");
                 ch = sc.next().charAt(0);
-                if( ch=='a' || ch=='A' || ch=='e' || ch=='E' || ch=='i' || ch=='I' || ch=='o' || ch=='O' || ch=='u' || ch=='U'  )
-                    System.out.println(ch+" is a vowel");
-                else
-                    System.out.println(ch+" is a consonant");
+                checkAlphabet(ch);
                 break;
             case 9:
                 System.out.println("Enter a character: ");
@@ -86,29 +67,7 @@ public class Main {
             case 10:
                 System.out.println("Enter week number:");
                 a = sc.nextInt();
-                switch (a){
-                    case 1:
-                        System.out.println("Sunday");
-                        break;
-                    case 2:
-                        System.out.println("Monday");
-                        break;
-                    case 3:
-                        System.out.println("Tuesday");
-                        break;
-                    case 4:
-                        System.out.println("Wednesday");
-                        break;
-                    case 5:
-                        System.out.println("Thursday");
-                        break;
-                    case 6:
-                        System.out.println("Friday");
-                        break;
-                    case 7:
-                        System.out.println("Smile coz it is saturday");
-                        break;
-                }
+                checkDay(a);
                 break;
             case 11:
                 System.out.println("Enter month number");
@@ -212,12 +171,7 @@ public class Main {
                 a = sc.nextInt();
                 b = sc.nextInt();
                 c = sc.nextInt();
-                if( (a+b)>c && (a+c)>b && (b+c)>a ) {
-                    String result = (a == b && a == c && b == c) ? "Equilateral" : ((a == b) || (b == c) || (a == c)) ? "Isosceles" : "Scalen";
-                    System.out.println(result + " triangle");
-                }
-                else
-                    System.out.println("Given sides are not sides of a triangle");
+                checkTriangle(a,b,c);
                 break;
             case 16:
                 System.out.println("Given quadratic equation:ax^2 + bx + c");
@@ -292,5 +246,91 @@ public class Main {
             default:
                 System.out.println("Please enter a valid question.");
         }
+    }
+
+    private static void checkTriangle(int a, int b, int c) {
+        if( (a+b)>c && (a+c)>b && (b+c)>a ) {
+            String result = (a == b && a == c && b == c) ? "Equilateral" : ((a == b) || (b == c) || (a == c)) ? "Isosceles" : "Scalen";
+            System.out.println(result + " triangle");
+        }
+        else
+            System.out.println("Given sides are not sides of a triangle");
+    }
+
+    private static void checkDay(int a) {
+        switch (a){
+            case 1:
+                System.out.println("Sunday");
+                break;
+            case 2:
+                System.out.println("Monday");
+                break;
+            case 3:
+                System.out.println("Tuesday");
+                break;
+            case 4:
+                System.out.println("Wednesday");
+                break;
+            case 5:
+                System.out.println("Thursday");
+                break;
+            case 6:
+                System.out.println("Friday");
+                break;
+            case 7:
+                System.out.println("Smile coz it is saturday");
+                break;
+        }
+    }
+
+    private static void checkAlphabet(char ch) {
+        if( ch=='a' || ch=='A' || ch=='e' || ch=='E' || ch=='i' || ch=='I' || ch=='o' || ch=='O' || ch=='u' || ch=='U'  )
+            System.out.println(ch+" is a vowel");
+        else
+            System.out.println(ch+" is a consonant");
+    }
+
+    private static void leapYear(int year) {
+
+        if( (year %400  == 0) || ((year%4 ==0) && (year%100 != 0)) )
+            System.out.println("It is a  leap year");
+        else
+            System.out.println("It is not a leap year");
+    }
+
+    private static void evenOdd() {
+        System.out.println("Enter a number: ");
+        Scanner sc = new Scanner(System.in);
+        int eo = sc.nextInt();
+        if(eo%2 == 0)
+            System.out.println("It is a even number");
+        else
+            System.out.println("It is an odd number");
+    }
+
+    private static void checkDivisible(int a) {
+        if( a%5 == 0 && a%11 == 0 )
+            System.out.println("It is divisible by 5 and 11");
+        else
+            System.out.println("It is not divisible by 5 and 11");
+    }
+
+    private static void checknumber(int a) {
+
+        if(a>=0){
+            System.out.println("It is a positive number");
+            if(a==0)
+                System.out.println("It is zero");
+        }
+        else
+            System.out.println("It is negative number");
+    }
+
+    private static void greaterthree(int a, int b, int c) {
+        System.out.println("Greater number is :"+((a>b) ? ( (a>c)?a:c ):( (b>c)?b:c )));
+    }
+
+    private static int greatertwo(int a, int b) {
+            return ( (a>b)?a:b);
     }
 }
